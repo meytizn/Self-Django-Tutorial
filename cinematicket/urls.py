@@ -10,5 +10,5 @@ app_name="cinematicket"
 
 
 urlpatterns = [
-    path('',views.home,name='home')
+    path('',views.Home.as_view(),name='home')
 ]
