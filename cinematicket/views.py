@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView,ListView
+from .models import Food
 
 
 # Create your views here.
@@ -9,6 +9,11 @@ from django.views.generic import TemplateView
 # def home(request):       
 #   return render(request,'cinematicket/home.html',{})
 
+class Conssention(ListView):
+  model = Food
+  template_name = 'concession.html'
+  context_object_name='food'
+  
 
 class Home(TemplateView):
   template_name='home.html'
