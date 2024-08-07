@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% load static %} {% block css %}
+
+<style>
+  .mycontainer {
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-content: end;
+    justify-item: center;
+    height: 400px;
+  }
+  h1 {
+    display: block;
+  }
+  h3 {
+    display: block;
+  }
+</style>
+
+{% endblock css %} {% block content %}
+
+<div class="container-fluid text-center mt-3">
+  <h1>اجزای تشکیل دهنده <span class="text-danger">{{food.name}}</span></h1>
+</div>
+<br /><br /><br />
+<div class="mycontainer">
+  <div>
+    <br /><br /><br /><br />
+    <h3>{{food.description}}</h3>
+  </div>
+
+  <div>
+    <br />
+    <h1>{{food.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+  </div>
+  <img src="{{food.photo.url}}" />
+</div>
+
+{% endblock content %} {% comment %} food detail ==> {{food.name}}
+name=models.CharField(_("نام محصصول"), max_length=50)
+description=models.TextField(_("توضیحات محصول"))
+photo=models.ImageField(_("تصویر محصول"), upload_to='cinematicket/')
+rate=models.IntegerField(_("امتیاز محصول")) time=models.IntegerField(_("زمان
+انتظار")) price=models.IntegerField(_("قیمت محصول"))
+pub_date=models.DateField(_("تاریخ انتشار"), auto_now=False, auto_now_add=True)
+{% endcomment %}

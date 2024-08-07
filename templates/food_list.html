@@ -11,11 +11,12 @@
 
 <div class="container-fluid text-center mt-3">
   
-  <h3>Concession Menu</h3>
+  <h3>Food list Menu</h3>
 </div>
 
   <div class="container-flouid mt-5 d-flex justify-content-around">
     {% for f in food %}
+    <a style="text-decoration:none" href="{% url "cinematicket:food_detail" f.pk  %}">
     <div style="width: 350px; height:155px">
       <div class="card mb-3">
         
@@ -40,6 +41,7 @@
         <div class="card-footer text-danger">{{f.pub_date}}</div>
       </div>
     </div>
+    </a>
     {% endfor %}
   </div>
 

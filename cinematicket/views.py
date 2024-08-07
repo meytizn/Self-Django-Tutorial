@@ -6,18 +6,16 @@ from .models import Food
 # Create your views here.
 
 
-# def home(request):       
-#   return render(request,'cinematicket/home.html',{})
-
-class Conssention(ListView):
-  model = Food
-  template_name = 'concession.html'
-  context_object_name='food'
-  
-
-class Home(TemplateView):
-  template_name='home.html'
+# Function based views
+ 
+def food_list(request):
+    food_list=Food.objects.all()
+    context={'food':food_list}
+    return render(request,'food_list.html',context)
 
 
-class Product(TemplateView):
-  template_name='product.html'
+def food_detail(request,pk):
+    food_detail=Food.objects.get(pk=pk)
+    return render(request,'food_detail.html',{'food':food_detail})
+
+

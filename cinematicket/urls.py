@@ -4,6 +4,9 @@
 from django.urls import path,include
 from . import views
 
+from .views import food_list , food_detail
+
+
 
 app_name="cinematicket"
 
@@ -11,10 +14,10 @@ app_name="cinematicket"
 
 
 urlpatterns = [
-    
-    path('home',views.Home.as_view(),name='home'),
-    path('product/',views.Product.as_view(),name='product'),
-    path('',views.Conssention.as_view(),name='food')
+    # function based views
+    path('',food_list,name='food'),
+    path('food_detail/<int:pk>/',food_detail,name="food_detail"),
+
     
   
 ]   
