@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from django.views.generic import TemplateView,ListView , DetailView , CreateView,UpdateView
+from django.views.generic import TemplateView,ListView , DetailView , CreateView,UpdateView,DeleteView
 from .models import Food
 from django.urls import reverse,reverse_lazy
 # from .forms import Foodform
@@ -38,6 +38,22 @@ class add_food_cb(CreateView):
     template_name='add_food.html'
     fields='__all__'
 
+
+
+
+class update_food (UpdateView):
+    model=Food
+    context_object_name="food"
+    template_name='update_view.html'
+    fields='__all__'
+    success_url=reverse_lazy("cinematicket:food_list")
     
 
+
+class delete_food (DeleteView):
+    model=Food
+    context_object_name="food"
+    template_name='delete_food.html'
+    fields='__all__'
+    success_url=reverse_lazy("cinematicket:food_list")
 

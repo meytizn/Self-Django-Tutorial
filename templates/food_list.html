@@ -28,7 +28,7 @@
           
 
         </svg>
-        <h3 class="card-header text-end bg-secondary text-light">{{f.name}}</h3>
+        <h3 class="card-header text-end bg-secondary text-light">{{f.name}} </h3>
         <div class="card-body">
           <p class="card-text text-end text-muted">{{f.description | truncatechars:55}}</p>
         </div>
@@ -39,7 +39,14 @@
           </li>
         </ul>
 
-        <div class="card-footer text-danger">{{f.pub_date}}</div>
+        <div class="card-footer text-danger">{{f.pub_date}}   <a style="float:right" href="{% url "cinematicket:update_food" f.pk  %}">ویرایش </a> 
+        
+        
+          <p  style="  float:right ; margin-right:25px">
+            <a style="float:right;color:red;" href="{% url "cinematicket:delete_food" f.pk  %}">حذف </a></p>
+
+
+        </div>
       </div>
     </div>
     </a>
