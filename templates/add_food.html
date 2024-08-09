@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load static %} {% block css %} {% endblock css %}
+{% block content %}
+
+<div class="container-fluid text-center mt-3">
+  <h3>افزودن غذا به منو</h3>
+</div>
+</br>
+<div class="container-fluid text-center mt-3">
+
+
+  <form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %} {{form.as_p}}
+    <button type="sunmit">افزودن</button>
+
+    
+  </form>
+</div>
+
+
+
+{% endblock content %}

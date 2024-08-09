@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext as _
+from django.urls import reverse
 
 # Create your models here.
 
@@ -15,3 +16,6 @@ class Food(models.Model):
 
   def __str__(self):
     return self.name
+  
+  def get_absolute_url(self):
+    return reverse ("cinematicket:food_list")
