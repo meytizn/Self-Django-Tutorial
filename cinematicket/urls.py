@@ -15,7 +15,7 @@ app_name="cinematicket"
 
 urlpatterns = [
     # function based views
-    path('',food_list,name='food_list'),
+    path('food-list/',food_list,name='food_list'),
     path('food_detail/<int:pk>/',food_detail,name="food_detail"),
     
     path('add_food/',add_food_cb.as_view(),name="add_food"),
@@ -23,6 +23,7 @@ urlpatterns = [
     path('update_food/<int:pk>/',update_food.as_view(),name="update_food"),
   
     path('delete_food/<int:pk>/',delete_food.as_view(),name="delete_food"),
-    
-    path('index/',index,name="index")
+
+    # template added 
+    path('',index,name="index")
 ]   
