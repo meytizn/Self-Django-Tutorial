@@ -57,3 +57,8 @@ class delete_food (DeleteView):
     fields='__all__'
     success_url=reverse_lazy("cinematicket:food_list")
 
+
+
+def index(request):
+    foods=Food.objects.all()
+    return render(request,'index-list.html',{'foods':foods})

@@ -12,7 +12,7 @@ class Food(models.Model):
   rate=models.IntegerField(_("امتیاز محصول"))
   time=models.IntegerField(_("زمان انتظار"))
   price=models.IntegerField(_("قیمت محصول"))
-  category=models.ForeignKey("Category", verbose_name=_("دسته بندی محصول  "), on_delete=models.CASCADE,blank=True,null=True)
+  category=models.ForeignKey("Category", verbose_name=_("دسته بندی محصول  "), on_delete=models.CASCADE,related_name="blog",blank=True,null=True)
   pub_date=models.DateField(_("تاریخ انتشار"), auto_now=False, auto_now_add=True)
 
   def __str__(self):
