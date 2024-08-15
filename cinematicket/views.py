@@ -1,6 +1,6 @@
 from django.shortcuts import render , redirect
 from django.views.generic import TemplateView,ListView , DetailView , CreateView,UpdateView,DeleteView
-from .models import Food
+from .models import Food , Category,Tag
 from django.urls import reverse,reverse_lazy
 # from .forms import Foodform
 
@@ -62,3 +62,9 @@ class delete_food (DeleteView):
 def index(request):
     foods=Food.objects.all()
     return render(request,'index-list.html',{'foods':foods})
+
+def index_detail(request,pk):
+    food=Food.objects.get(pk=pk)
+    recentfood=Food.objects.all().order_by("-pub_date")[:2]
+
+    return render(request,'index_detail.html',{'food':food,'recentfood':recentfood,})

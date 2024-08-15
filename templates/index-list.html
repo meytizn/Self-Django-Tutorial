@@ -19,6 +19,7 @@
     <div class="filters-content">
       <div class="row grid">
         {% for food in foods %}
+        <a href="{% url "cinematicket:index-detail" food.pk  %}">
         <div class="col-sm-6 col-lg-4 all pizza">
           <div class="box">
             <div>
@@ -94,6 +95,7 @@
             </div>
           </div>
         </div>
+      </a>
         {% endfor %}
 
         <div class="col-sm-6 col-lg-4 all burger">

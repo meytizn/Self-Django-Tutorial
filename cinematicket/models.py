@@ -39,7 +39,8 @@ class Category(models.Model):
 
 class Tag(models.Model):
   title=models.CharField(_("عنوان تگ "), max_length=50)
-  slug=models.CharField(_("عنوان تگ به لاتین "), max_length=50)
+  # slug=models.CharField(_("عنوان تگ به لاتین "), max_length=50)
+  slug_tag= models.SlugField(_("عنوان تگ به لاتین "),blank=True,null="True")
   edited_date=models.DateField(_("اخرین بروزرسانی"), auto_now=True, auto_now_add=False)
   pub_date=models.DateField(_("زمان انشار"), auto_now=False, auto_now_add=True)
 

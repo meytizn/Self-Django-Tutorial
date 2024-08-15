@@ -4,7 +4,7 @@
 from django.urls import path,include
 from . import views
 
-from .views import food_list , food_detail,add_food_cb,update_food,delete_food , index
+from .views import food_list , food_detail,add_food_cb,update_food,delete_food , index,index_detail
 
 
 
@@ -25,5 +25,6 @@ urlpatterns = [
     path('delete_food/<int:pk>/',delete_food.as_view(),name="delete_food"),
 
     # template added 
-    path('',index,name="index")
+    path('',index,name="index"),
+    path('detail/<int:pk>/',index_detail,name='index-detail')
 ]   
