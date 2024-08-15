@@ -13,7 +13,7 @@ class Food(models.Model):
   time=models.IntegerField(_("زمان انتظار"))
   price=models.IntegerField(_("قیمت محصول"))
   # rels
-  category=models.ForeignKey("Category", verbose_name=_("دسته بندی محصول  "), on_delete=models.CASCADE,related_name="blog",blank=True,null=True)
+  category=models.ForeignKey("Category", verbose_name=_("دسته بندی محصول  "), on_delete=models.CASCADE,related_name="food",blank=True,null=True)
   tag=models.ManyToManyField("Tag", verbose_name=_("تگ های محصول"),related_name='food',blank=True,null=True)
   # end rels
   pub_date=models.DateField(_("تاریخ انتشار"), auto_now=False, auto_now_add=True)

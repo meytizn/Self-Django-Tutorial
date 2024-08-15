@@ -63,8 +63,14 @@ def index(request):
     foods=Food.objects.all()
     return render(request,'index-list.html',{'foods':foods})
 
+
+
 def index_detail(request,pk):
     food=Food.objects.get(pk=pk)
     recentfood=Food.objects.all().order_by("-pub_date")[:2]
 
-    return render(request,'index_detail.html',{'food':food,'recentfood':recentfood,})
+    category=Category.objects.all().filter(food=food)
+
+    tag=Tag.objects.all().filter(food=food)
+
+    return render(request,'index_detail.html',{'food':food,'recentfood':recentfood,'tag':tag,'category':category,})
