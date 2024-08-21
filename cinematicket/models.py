@@ -46,3 +46,17 @@ class Tag(models.Model):
 
   def __str__(self):
     return self.title
+
+
+
+class Comment(models.Model):
+    food=models.ForeignKey("Food", verbose_name=_("غذا"),related_name="food", on_delete=models.CASCADE)
+    name =models.CharField(_("نام کاربری "), max_length=60)
+    email=models.EmailField(_("ایمیل "), max_length=254)
+    message =models.TextField(_("متن نظر"))
+    pub_date=models.DateTimeField(_("انتشار"), auto_now=False, auto_now_add=True)
+
+    def __str__(self):
+      return self.email
+    
+

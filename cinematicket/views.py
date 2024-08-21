@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from django.views.generic import TemplateView,ListView , DetailView , CreateView,UpdateView,DeleteView
-from .models import Food , Category,Tag
+from .models import Food , Category,Tag , Comment
+from .forms import CommentForm
 from django.urls import reverse,reverse_lazy
 # from .forms import Foodform
 
@@ -66,11 +67,27 @@ def index(request):
 
 
 def index_detail(request,pk):
+
+    
     food=Food.objects.get(pk=pk)
+    
     recentfood=Food.objects.all().order_by("-pub_date")[:2]
 
     category=Category.objects.all().filter(food=food)
 
     tag=Tag.objects.all().filter(food=food)
 
-    return render(request,'index_detail.html',{'food':food,'recentfood':recentfood,'tag':tag,'category':category,})
+
+    if request.method == "POST":
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            name=form.cleaned_data['name']
+            email=form.cleaned_data['email']
+            message=form.cleaned_data['message']
+            
+            comment=Comment(food=food,name=name,message=message)
+            comment.save()
+
+    context={'food':food,'recentfood':recentfood,'tag':tag,'category':category,'comment':comment}
+
+    return render(request,'index_detail.html',context)

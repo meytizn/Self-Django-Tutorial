@@ -361,19 +361,20 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form_container">
-              <form action="">
+            
+            
+            
+            
+            
+              <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+            
                 <div>
                   <input
                     type="text"
+                    name="name"
                     class="form-control"
                     placeholder="Your Name"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Phone Number"
                   />
                 </div>
                 <div>
@@ -383,6 +384,21 @@
                     placeholder="Your Email"
                   />
                 </div>
+
+
+
+
+
+                <div>
+                  <input
+                  name="message"
+                    type="text"
+                    class="form-control"
+                    placeholder="Your Email"
+                  />
+                </div>
+
+
                 <div>
                   <select class="form-control nice-select wide">
                     <option value="" disabled selected>
@@ -400,7 +416,20 @@
                 <div class="btn_box">
                   <button>Book Now</button>
                 </div>
-              </form>
+
+
+              </form  >
+                  
+              
+{% for comment in comment %}
+
+{{comment.name}}
+
+{{comment.message}}
+{% endfor %}
+
+
+
             </div>
           </div>
           <div class="col-md-6">
