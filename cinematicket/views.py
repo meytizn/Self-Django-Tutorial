@@ -78,16 +78,32 @@ def index_detail(request,pk):
     tag=Tag.objects.all().filter(food=food)
 
 
-    if request.method == "POST":
-        form=CommentForm(request.POST)
-        if form.is_valid():
-            name=form.cleaned_data['name']
-            email=form.cleaned_data['email']
-            message=form.cleaned_data['message']
+    # if request.method == "POST":
+    #     form=CommentForm(request.POST)
+    #     if form.is_valid():
+    #         name=form.cleaned_data['name']
+    #         email=form.cleaned_data['email']
+    #         message=form.cleaned_data['message']
             
-            comment=Comment(food=food,name=name,message=message)
-            comment.save()
+    #         comment=Comment(food=food,name=name,message=message)
+    #         comment.save()
 
-    context={'food':food,'recentfood':recentfood,'tag':tag,'category':category,'comment':comment}
+    context={'food':food,'recentfood':recentfood,'tag':tag,'category':category,}
 
     return render(request,'index_detail.html',context)
+
+
+
+def category(request,category):
+    food=Food.objects.filter(category__slug=category)
+    name=category + ' ( Category ) '
+    context={'food':food , 'name':name}
+    return render(request,'categoryandtag.html',context )
+
+
+def tag(request,tag):
+    food=Food.objects.filter(tag__slug_tag=tag)
+    name=tag + '( Tags ) '
+    context={'food':food , 'name':name}
+    return render(request,'categoryandtag.html',context )
+

@@ -187,7 +187,8 @@
           <p  class="float-right text-warning">&nbsp; &nbsp;   :   دسته محصول  </p>
 
           {% for category in category %}
-          <p class="float-right">  {{category.title}}  </p>  
+          <a href="{% url "cinematicket:category" category.slug %}">
+          <p class="float-right">  {{category.title}}  </p>  </a>
           {% endfor %}
           
           {% comment %} end category {% endcomment %}
@@ -197,8 +198,8 @@
           {% comment %} tags {% endcomment %}
           <p  class="float-right text-danger">&nbsp; &nbsp;   :   تگ های محصول  </p>
 
-          {% for tag in tag %}
-          <p class="float-right">  &nbsp; , &nbsp;   {{tag.title}}  </p>
+          {% for tag in tag %} 
+          <p class="float-right">  &nbsp; , &nbsp;<a href="{% url "cinematicket:tag" tag.slug_tag %}">  {{tag.title}} </a></p> 
           {% endfor %}
 
           {% comment %} end tags {% endcomment %}

@@ -4,7 +4,7 @@
 from django.urls import path,include
 from . import views
 
-from .views import food_list , food_detail,add_food_cb,update_food,delete_food , index,index_detail
+from .views import food_list , food_detail,add_food_cb,update_food,delete_food , index,index_detail , category,tag
 
 
 
@@ -26,5 +26,10 @@ urlpatterns = [
 
     # template added 
     path('',index,name="index"),
-    path('detail/<int:pk>/',index_detail,name='index-detail')
+    path('detail/<int:pk>/',index_detail,name='index-detail'),
+
+    # category page
+    path('category/<slug:category>/',category,name='category'),
+    path('tag/<slug:tag>/',tag,name='tag'),
+    
 ]   
