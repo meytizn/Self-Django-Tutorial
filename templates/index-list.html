@@ -1,5 +1,12 @@
 {% extends "index-base.html" %} {% load static %} {% block content %}
 
+
+
+{% block css %}
+{% endblock css %}
+
+
+
 <!-- food section -->
 
 <section class="food_section layout_padding-bottom">
@@ -27,11 +34,11 @@
                 <img src="{{food.photo.url}}" alt="" />
               </div>
               <div class="detail-box">
-                <h5 style="text-align: right">{{food.name}}</h5>
-                <p style="text-align: right">{{food.description}}</p>
+                <h5 style="text-align: right ; color:white">{{food.name}}</h5>
+                <p style="text-align: right;">{{food.description}}</p>
                 <div class="options">
-                  <h6>
-                    <span style="float: left">هزارتومان</span>
+                  <h6 style="color:white">
+                    <span style="float: left;color:white">هزارتومان</span>
                     &nbsp;&nbsp;{{food.price}}
                   </h6>
 
@@ -98,7 +105,7 @@
       </a>
         {% endfor %}
 
-        <div class="col-sm-6 col-lg-4 all burger">
+        {% comment %} <div class="col-sm-6 col-lg-4 all burger">
           <div class="box">
             <div>
               <div class="img-box">
@@ -689,9 +696,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
       </div>
     </div>
+
+
+
     <div class="btn-box">
       <a href=""> View More </a>
     </div>
