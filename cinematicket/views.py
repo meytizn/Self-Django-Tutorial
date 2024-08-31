@@ -3,13 +3,13 @@ from django.views.generic import TemplateView,ListView , DetailView , CreateView
 from .models import Food , Category,Tag , Comment
 from .forms import CommentForm
 from django.urls import reverse,reverse_lazy
+from django.core.paginator import Paginator
+# use paginator=4min in video
 # from .forms import Foodform
 
-# Create your views here.
 
 
 # Function based views
- 
 def food_list(request):
     food_list=Food.objects.all()
     context={'food':food_list}
@@ -60,9 +60,20 @@ class delete_food (DeleteView):
 
 
 
+
+
+# my project begins here ..
+
 def index(request):
     foods=Food.objects.all()
-    return render(request,'index-list.html',{'foods':foods})
+    # using paginator .
+    paginator = Paginator(foods,1)  
+    page_number = request.GET.get("page")
+    food_list = paginator.get_page(page_number)
+    return render(request,'index-list.html',{'food_list':food_list})
+
+
+
 
 
 
