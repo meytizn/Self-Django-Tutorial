@@ -4,6 +4,9 @@ from .models import Food , Category,Tag , Comment
 from .forms import CommentForm
 from django.urls import reverse,reverse_lazy
 from django.core.paginator import Paginator
+
+from django.db.models import Q
+
 # use paginator=4min in video
 # from .forms import Foodform
 
@@ -67,7 +70,7 @@ class delete_food (DeleteView):
 def index(request):
     foods=Food.objects.all()
     # using paginator .
-    paginator = Paginator(foods,1)  
+    paginator = Paginator(foods,6)  
     page_number = request.GET.get("page")
     food_list = paginator.get_page(page_number)
     return render(request,'index-list.html',{'food_list':food_list})
@@ -117,4 +120,17 @@ def tag(request,tag):
     name=tag + '( Tags ) '
     context={'food':food , 'name':name}
     return render(request,'categoryandtag.html',context )
+
+
+
+
+
+
+def searchbar(request):
+    if request.method=="GET":
+        q=request.GET.get("search")
+    food_list=Food.objects.filter( Q(name__icontains=q) |Q(description__icontains=q) )
+
+
+    return render(request,'index-list.html',{'food_list':food_list})
 

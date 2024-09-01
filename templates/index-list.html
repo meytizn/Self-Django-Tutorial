@@ -23,6 +23,20 @@
       <li data-filter=".fries">Fries</li>
     </ul>
 
+{% comment %} search bar  {% endcomment %}
+
+<nav class="navbar navbar-light bg-light">
+  
+  <form class="form-inline" method="GET" action="{% url "cinematicket:search" %}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+
+{% comment %} endsearchbar {% endcomment %}
+
+
     <div class="filters-content">
       <div class="row grid">
         {% for food in food_list %}
